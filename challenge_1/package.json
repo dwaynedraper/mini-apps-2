@@ -1,0 +1,30 @@
+{
+  "name": "challenge_1",
+  "version": "1.0.0",
+  "description": "Historical Data Fetcher",
+  "main": "client/index.jsx",
+  "author": "Dean Draper",
+  "scripts": {
+    "clean": "rm dist/bundle.js",
+    "json-server": "json-server --watch data/db.json",
+    "react:dev": "webpack --watch --mode development",
+    "build": "webpack --mode production"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "json-server": "^0.16.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-paginate": "^7.1.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/preset-env": "^7.14.0",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.25.0",
+    "eslint-plugin-react": "^7.23.2",
+    "webpack": "^5.36.1",
+    "webpack-cli": "^4.6.0"
+  }
+}
