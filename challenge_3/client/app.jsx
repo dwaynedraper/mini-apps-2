@@ -76,21 +76,35 @@ class App extends React.Component {
     console.log('finalFrame');
   }
 
+  handleChange(e) {
+    this.setState({
+      numPins: e.target.value
+    })
+  }
+
   handleSubmit(e) {
-    if (this.state.currFrame <= 9) {
-      this.earlyFrames(e);
-    } else if (this.state.currFrame === 10) {
-      this.finalFrame(e);
-    } else (
-      this.setState({
-        message: 'Game over! Congratulations on your awesome score!!'
-      })
-    )
+    e.preventDefault();
+    //* testing purposes only - remove this line
+    this.updateTurn();
+    // if (this.state.currFrame <= 9) {
+    //   this.earlyFrames(e);
+    // } else if (this.state.currFrame === 10) {
+    //   this.finalFrame(e);
+    // } else (
+    //   this.setState({
+    //     message: 'Game over! Congratulations on your awesome score!!'
+    //   })
+    // )
   }
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}></form>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Number of pins hit:
+            <input type="text" value={this.state.numPins} onChange=""/>
+          </label>
+        </form>
         <Scorecard />
         {/* <MessageBoard /> */}
       </div>
