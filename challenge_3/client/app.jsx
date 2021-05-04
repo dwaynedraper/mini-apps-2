@@ -1,4 +1,5 @@
 import React from 'react';
+import Scorecard from './components/Scorecard';
 
 class App extends React.Component {
   constructor() {
@@ -15,12 +16,15 @@ class App extends React.Component {
   componentDidMount() {
 
   }
+  handleScoreInput() {
+    
+  }
   render() {
     return (
       <div>
-        <PinSelector />
+        
         <Scorecard />
-        <MessageBoard />
+        {/* <MessageBoard /> */}
       </div>
     )
   }
