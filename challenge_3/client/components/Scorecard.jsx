@@ -3,25 +3,26 @@ import React from 'react';
 const Scorecard = (props) => {
   return (
     <div className="App">
+      <br/>
       <table style={{border: '1px solid black'}}>
         <thead>
           <tr>
-            <td>Bowling Scorecard</td>
-            <td colspan="2">1</td>
-            <td colspan="2">2</td>
-            <td colspan="2">3</td>
-            <td colspan="2">4</td>
-            <td colspan="2">5</td>
-            <td colspan="2">6</td>
-            <td colspan="2">7</td>
-            <td colspan="2">8</td>
-            <td colspan="2">9</td>
-            <td colspan="3">10</td>
+            <td></td>
+            <td colSpan="2">1</td>
+            <td colSpan="2">2</td>
+            <td colSpan="2">3</td>
+            <td colSpan="2">4</td>
+            <td colSpan="2">5</td>
+            <td colSpan="2">6</td>
+            <td colSpan="2">7</td>
+            <td colSpan="2">8</td>
+            <td colSpan="2">9</td>
+            <td colSpan="3">10</td>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="tbody">
           <tr>
-            <td>Player One</td>
+            <td className="override">Player One</td>
             <td id="turn-1-1"></td>
             <td id="turn-1-2"></td>
             <td id="turn-2-1"></td>
@@ -46,19 +47,22 @@ const Scorecard = (props) => {
           </tr>
           <tr>
             <td>Score</td>
-            <td id="frame-1"colspan="2"></td>
-            <td id="frame-2"colspan="2"></td>
-            <td id="frame-3"colspan="2"></td>
-            <td id="frame-4"colspan="2"></td>
-            <td id="frame-5"colspan="2"></td>
-            <td id="frame-6"colspan="2"></td>
-            <td id="frame-7"colspan="2"></td>
-            <td id="frame-8"colspan="2"></td>
-            <td id="frame-9"colspan="2"></td>
-            <td id="frame-10"colspan="3"></td>
+            <td id="frame-1"colSpan="2"></td>
+            <td id="frame-2"colSpan="2"></td>
+            <td id="frame-3"colSpan="2"></td>
+            <td id="frame-4"colSpan="2"></td>
+            <td id="frame-5"colSpan="2"></td>
+            <td id="frame-6"colSpan="2"></td>
+            <td id="frame-7"colSpan="2"></td>
+            <td id="frame-8"colSpan="2"></td>
+            <td id="frame-9"colSpan="2"></td>
+            <td id="frame-10"colSpan="3"></td>
           </tr>
         </tbody>
       </table>
+      <br/>
+      <h1>Total:</h1>
+      <h1 id="total"></h1>
     </div>
   )
 }
