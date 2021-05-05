@@ -63,6 +63,7 @@ const Scorecard = (props) => {
       <br/>
       <h1>Total:</h1>
       <h1 id="total"></h1>
+      <h1>{props.message}</h1>
     </div>
   )
 }
