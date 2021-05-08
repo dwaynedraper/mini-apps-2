@@ -28,13 +28,15 @@ class App extends React.Component {
   }
 
   cycleMoves() {
-    let thisMove = this.state.nextMove;
-    let nextMove = this.state.moveAfterNext;
-    let moveAfterNext = [];
-    this.setState({
-      thisMove: thisMove,
-      nextMove: nextMove,
-      moveAfterNext: moveAfterNext
+    return new Promise(resolve => {
+      let thisMove = this.state.nextMove;
+      let nextMove = this.state.moveAfterNext;
+      let moveAfterNext = [];
+      resolve(this.setState({
+        thisMove: thisMove,
+        nextMove: nextMove,
+        moveAfterNext: moveAfterNext
+      }))
     })
   }
 
@@ -57,8 +59,12 @@ class App extends React.Component {
 
   updateTotal() {
     let el = document.getElementById(`total`);
+    let bonusPoints = 0;
+    if (this.state.thisMove.length > 0) {
+      bonusPoints = this.state.numPins * this.state.thisMove.length;
+    }
     !el.innerText ? el.innerText = this.state.numPins :
-    el.innerText = parseInt(el.innerText) + parseInt(this.state.numPins);
+    el.innerText = parseInt(el.innerText) + parseInt(this.state.numPins) + parseInt(bonusPoints);
     // if (this.state.thisMove.length > 0) {
       
     // }
@@ -69,7 +75,8 @@ class App extends React.Component {
     el.innerText = 'X';
     this.setState((prevState) => ({
       nextMove: [...prevState.nextMove, this.state.currFrame],
-      moveAfterNext: [...prevState.moveAfterNext, this.state.currFrame]
+      moveAfterNext: [...prevState.moveAfterNext, this.state.currFrame],
+      message: 'Noice!! You got a strike!'
     }))
   }
   
@@ -77,7 +84,7 @@ class App extends React.Component {
     let el = document.getElementById(`turn-${this.state.currFrame}-${this.state.currTurn}`);
     el.innerText = '/';
     this.setState((prevState) => ({
-      nextMove: [...prevState.nextMove, 1]
+      nextMove: [...prevState.nextMove, this.state.currFrame]
     }))
   }
   
@@ -92,6 +99,11 @@ class App extends React.Component {
       })
       this.setState()
     } else {
+      if (this.state.numPins == 0) {
+        this.setState({
+          message: 'LOSER! You got a gutter ball!'
+        })
+      }
       this.updateTurn();
       this.updateFrame();
       this.updateTotal();
@@ -147,9 +159,13 @@ class App extends React.Component {
     })
   }
 
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
-    this.cycleMoves();
+    await this.cycleMoves();
+    this.setState({
+      message: ''
+    })
+    console.log('state', this.state);
     if (this.state.currFrame <= 9) {
       this.earlyFrames();
     } else if (this.state.currFrame === 10) {
